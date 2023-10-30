@@ -11,7 +11,6 @@ const App = () => {
     const result = await Weather(city, scale);
     setScale(scale);
     setWeatherData(result);
-    console.log(scale);
   };
 
   return (
