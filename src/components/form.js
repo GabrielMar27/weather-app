@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 
 const SearchBar = ({ onSubmit }) => {
-  const [weatherData, setWeatherData] = useState(null);
-  const [city, setCity] = useState("");
-  const [scale, setScale] = useState("metric");
+  const [city, setCity] = useState("Galati");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(city, scale);
-    console.log(scale);
+    onSubmit(city);
   };
 
   const handleChange = (event) => {
     if (event.target.name === "city") {
       setCity(event.target.value);
-    } else if (event.target.name === "scale") {
-      setScale(event.target.value);
     }
   };
   return (
@@ -28,24 +23,6 @@ const SearchBar = ({ onSubmit }) => {
           onChange={handleChange}
           placeholder="Enter a city"
         />
-        <div>
-          <input
-            type="radio"
-            name="scale"
-            value="metric"
-            checked={scale === "metric"}
-            onChange={handleChange}
-          />{" "}
-          Metric
-          <input
-            type="radio"
-            name="scale"
-            value="imperial"
-            checked={scale === "imperial"}
-            onChange={handleChange}
-          />{" "}
-          Imperial
-        </div>
         <button type="submit">Get Weather</button>
       </form>
     </div>

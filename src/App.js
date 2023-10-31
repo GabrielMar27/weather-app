@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Weather from "./components/api";
 import SearchBar from "./components/form";
 import WeatherCard from "./components/renderData";
+import HoldData from "./components/storedData";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const [scale, setScale] = useState("metric");
 
-  const handleSubmit = async (city, scale) => {
-    const result = await Weather(city, scale);
-    setScale(scale);
+  const handleSubmit = async (city) => {
+    const result = await Weather(city);
+    console.log(localStorage);
+
     setWeatherData(result);
   };
 
@@ -17,7 +18,8 @@ const App = () => {
     <div>
       <h1>Weather Forecast App</h1>
       <SearchBar onSubmit={handleSubmit} />
-      <WeatherCard weatherData={weatherData} scale={scale} />
+      <WeatherCard weatherData={weatherData}  />
+      <HoldData weatherData={weatherData}  />
     </div>
   );
 };
