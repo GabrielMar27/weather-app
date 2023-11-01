@@ -29,26 +29,30 @@ const HoldData = (props) => {
 
   return (
     <>
-      {data.map((weatherData, index) => (
-        <Card variant="outlined" key={index}>
-          <h2>{weatherData.name}</h2>
-          <p>Temperatură: {weatherData.main.temp} °C</p>
-          <p>Descriere: {weatherData.weather[0].description}</p>
-          <p>Simte-te ca: {weatherData.main.feels_like} °C</p>
-          <p>Umiditate: {weatherData.main.humidity}%</p>
-          <p>Presiune: {weatherData.main.pressure}</p>
-          <p>Viteză vânt: {weatherData.wind.speed} m/s</p>
-          <Button
-            variant="contained"
-            onClick={() => {
-              if (window.confirm("Sigur doresti sa stergi acesta cautare?"))
-                deleteData(index);
-            }}
-          >
-            Delete
-          </Button>
-        </Card>
-      ))}
+      {props.weatherData ? (
+        data.map((weatherData, index) => (
+          <Card variant="outlined" key={index}>
+            <h2>{weatherData.name}</h2>
+            <p>Temperatură: {weatherData.main.temp} °C</p>
+            <p>Descriere: {weatherData.weather[0].description}</p>
+            <p>Simte-te ca: {weatherData.main.feels_like} °C</p>
+            <p>Umiditate: {weatherData.main.humidity}%</p>
+            <p>Presiune: {weatherData.main.pressure}</p>
+            <p>Viteză vânt: {weatherData.wind.speed} m/s</p>
+            <Button
+              variant="contained"
+              onClick={() => {
+                if (window.confirm("Sigur doresti sa stergi acesta cautare?"))
+                  deleteData(index);
+              }}
+            >
+              Delete
+            </Button>
+          </Card>
+        ))
+      ) : (
+        <p>Loading History...</p>
+      )}
     </>
   );
 };

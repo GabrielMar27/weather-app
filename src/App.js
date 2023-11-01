@@ -1,13 +1,12 @@
+// app.js
 import React, { useState } from "react";
-//components
+import Container from "./components/container"; // Importăm componenta Container corect
 import Weather from "./components/api";
 import SearchBar from "./components/form";
 import WeatherCard from "./components/renderData";
 import HoldData from "./components/storedData";
-//styles
-import "./style/general-style.css";
-//mUI styles
-
+// Stiluri CSS
+import "./style/general-style.css"; // Importul pentru stilurile CSS
 import Grid from "@mui/material/Grid";
 import Item from "./components/item";
 import { List, Paper } from "@mui/material";
@@ -21,31 +20,40 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Weather Forecast App</h1>
+    <div className="MainContainer">
+      <div className="titleSearchBar">
+        <h1>Weather Forecast App</h1>
 
-      <SearchBar onSubmit={handleSubmit} />
+        <SearchBar onSubmit={handleSubmit} />
+      </div>
       <Grid
+        className="mainContainer"
         container
         spacing={3}
         rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        columnSpacing={{ xs: 1, sm: 1, md: 3 }}
       >
-        <Grid item xs={6}>
-          <Item>
-            <WeatherCard weatherData={weatherData} />
-          </Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>
-            <Paper style={{ maxHeight: 307, overflow: "auto" }}>
-              <List>
-                {" "}
-                <HoldData weatherData={weatherData} />
-              </List>
-            </Paper>
-          </Item>
-        </Grid>
+        <Container>
+          {" "}
+          <Grid item xs={4}>
+            last Search
+            <Item>
+              <WeatherCard weatherData={weatherData} />
+            </Item>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              Search History
+              <Item>
+                <Paper style={{ maxHeight: 307, overflow: "auto" }}>
+                  <List>
+                    <HoldData weatherData={weatherData} />
+                  </List>
+                </Paper>
+              </Item>
+            </>
+          </Grid>
+        </Container>
       </Grid>
     </div>
   );
