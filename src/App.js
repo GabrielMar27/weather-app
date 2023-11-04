@@ -34,24 +34,20 @@ const App = () => {
         rowSpacing={1}
         columnSpacing={{ xs: 1, sm: 1, md: 3 }}
       >
-        <Container>
+        <Container maxWidth="100vw">
           {" "}
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             last Search
-            <Item>
-              <WeatherCard weatherData={weatherData} />
-            </Item>
+            <WeatherCard weatherData={weatherData} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <>
               Search History
-              <Item>
-                <Paper style={{ maxHeight: 307, overflow: "auto" }}>
-                  <List>
-                    <HoldData weatherData={weatherData} />
-                  </List>
-                </Paper>
-              </Item>
+              <Paper style={{ maxHeight: 307, overflow: "auto" }}>
+                <List>
+                  <HoldData weatherData={weatherData} />
+                </List>
+              </Paper>
             </>
           </Grid>
         </Container>

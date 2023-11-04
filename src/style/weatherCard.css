@@ -1,0 +1,16 @@
+.weatherCard {
+  background-color: black;
+  color: white;
+  border: 0px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
