@@ -11,6 +11,14 @@ const HoldData = (props) => {
     localStorage.setItem("searchHistory", JSON.stringify(updatedData));
     console.log(`deleted ${index}`);
   };
+
+  const clearAllData = () => {
+    if (window.confirm("Are you sure you want to delete all searches?")) {
+      localStorage.clear();
+      setData([]);
+    }
+  };
+
   useEffect(() => {
     if (props.weatherData) {
       const isDuplicate = data.some(
@@ -29,30 +37,44 @@ const HoldData = (props) => {
 
   return (
     <>
-      {props.weatherData ? (
-        data.map((weatherData, index) => (
-          <Card variant="outlined" key={index}>
-            <h2>{weatherData.name}</h2>
-            <p>Temperatură: {weatherData.main.temp} °C</p>
-            <p>Descriere: {weatherData.weather[0].description}</p>
-            <p>Simte-te ca: {weatherData.main.feels_like} °C</p>
-            <p>Umiditate: {weatherData.main.humidity}%</p>
-            <p>Presiune: {weatherData.main.pressure}</p>
-            <p>Viteză vânt: {weatherData.wind.speed} m/s</p>
-            <Button
-              variant="contained"
-              onClick={() => {
-                if (window.confirm("Sigur doresti sa stergi acesta cautare?"))
-                  deleteData(index);
-              }}
-            >
-              Delete
-            </Button>
-          </Card>
-        ))
+      {data.length > 0 ? (
+        <Button
+          variant="contained"
+          onClick={() => {
+            clearAllData();
+          }}
+        >
+          Delete all Data
+        </Button>
       ) : (
-        <p>Loading History...</p>
+        <>Loading Data...</>
       )}
+      {data.map((weatherData, index) => (
+        <Card variant="outlined" key={index}>
+          <img
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+            alt="weather icon"
+          ></img>
+          <h2>{weatherData.name}</h2>
+          <p>Temperature: {weatherData.main.temp} °C</p>
+          <p>Description: {weatherData.weather[0].description}</p>
+          <p>Feels Like: {weatherData.main.feels_like} °C</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
+          <p>Pressure: {weatherData.main.pressure}</p>
+          <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+          <Button
+            variant="contained"
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you want to delete this search?")
+              )
+                deleteData(index);
+            }}
+          >
+            Delete
+          </Button>
+        </Card>
+      ))}
     </>
   );
 };

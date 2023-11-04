@@ -4,6 +4,7 @@ import Container from "./components/container"; // Importăm componenta Containe
 import Weather from "./components/api";
 import SearchBar from "./components/form";
 import WeatherCard from "./components/renderData";
+
 import HoldData from "./components/storedData";
 // Stiluri CSS
 import "./style/general-style.css"; // Importul pentru stilurile CSS
