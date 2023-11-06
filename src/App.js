@@ -4,7 +4,7 @@ import Container from "./components/container"; // Importăm componenta Containe
 import Weather from "./components/api";
 import SearchBar from "./components/form";
 import WeatherCard from "./components/renderData";
-
+import DarkModeToggle from "./components/darkThemeBTN";
 import HoldData from "./components/storedData";
 // Stiluri CSS
 import "./style/general-style.css"; // Importul pentru stilurile CSS
@@ -22,6 +22,7 @@ const App = () => {
 
   return (
     <div className="MainContainer">
+      <DarkModeToggle></DarkModeToggle>
       <div className="titleSearchBar">
         <h1>Weather Forecast App</h1>
 
@@ -41,14 +42,14 @@ const App = () => {
             <WeatherCard weatherData={weatherData} />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <>
-              Search History
-              <Paper style={{ maxHeight: 307, overflow: "auto" }}>
-                <List>
-                  <HoldData weatherData={weatherData} />
-                </List>
-              </Paper>
-            </>
+            Search History
+            <List
+              style={{ maxHeight: 307, overflow: "auto", border: 1 }}
+              xs={12}
+              sm={4}
+            >
+              <HoldData weatherData={weatherData} />
+            </List>
           </Grid>
         </Container>
       </Grid>

@@ -33,9 +33,6 @@ const WeatherCard = (props) => {
             <p>Temperature: {props.weatherData.main.temp}°C</p>
             <p>Description: {props.weatherData.weather[0].description}</p>
             <p>Feels Like: {props.weatherData.main.feels_like}°C</p>
-            <p>Humidity: {props.weatherData.main.humidity}%</p>
-            <p>Pressure: {props.weatherData.main.pressure}</p>
-            <p>Wind Speed: {props.weatherData.wind.speed}m/s</p>
           </div>
         </>
       ) : (
