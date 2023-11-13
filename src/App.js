@@ -4,7 +4,7 @@ import Container from "./components/container"; // Importăm componenta Containe
 import Weather from "./components/api";
 import SearchBar from "./components/form";
 import WeatherCard from "./components/renderData";
-import DarkModeToggle from "./components/darkThemeBTN";
+
 import HoldData from "./components/storedData";
 // Stiluri CSS
 import "./style/general-style.css"; // Importul pentru stilurile CSS
@@ -22,7 +22,6 @@ const App = () => {
 
   return (
     <div className="MainContainer">
-      <DarkModeToggle></DarkModeToggle>
       <div className="titleSearchBar">
         <h1>Weather Forecast App</h1>
 
