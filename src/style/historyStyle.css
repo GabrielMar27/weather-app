@@ -12,3 +12,12 @@
 
   padding: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .cityTemp {
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+  }
+}
